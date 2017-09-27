@@ -161,6 +161,11 @@ namespace WindowsFormsApp1
             cmd.ExecuteNonQuery();
             connection.Close();
         }
+        /// <summary>
+        /// сохранение заказа
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="price"></param>
         public void saveOrder(string[] data,int price) {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
