@@ -16,7 +16,12 @@ namespace WindowsFormsApp1
         private static string pathBD;
         public static string stringConnect;
         private static SqlConnection connection;
-
+        /// <summary>
+        /// Функция авторизации 
+        /// </summary>
+        /// <param name="login">Вводимый логин</param>
+        /// <param name="password">Вводимый пароль</param>
+        /// <returns></returns>
         public string authorization(string login, string password) {
             pathBD = System.IO.Path.GetFullPath("information_system.mdf");
             stringConnect = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True", pathBD);
@@ -31,6 +36,7 @@ namespace WindowsFormsApp1
                 setLogin(login);
             return userRole;
         }
+
         public DataTable clientView() {
             string command = String.Format("SELECT [order].date AS Дата, [order].number AS 'Количество', users.name AS 'Менеджер', [order].price AS 'Стоимость' FROM[order] INNER JOIN users ON[order].manager = users.login WHERE([order].client = '{0}')", userLogin);
             return dataTableTemplateFunction(command);
@@ -43,6 +49,11 @@ namespace WindowsFormsApp1
             string command = String.Format("SELECT * FROM [users]");
             return dataTableTemplateFunction(command);
         }
+        /// <summary>
+        /// Функция изменения статуса заказа
+        /// </summary>
+        /// <param name="id">Номер заказа</param>
+        /// <param name="statusId">Новый статус</param>
         public void updateStatus(int id, int statusId) {
             pathBD = System.IO.Path.GetFullPath("information_system.mdf");
             stringConnect = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True", pathBD);
