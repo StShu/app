@@ -55,9 +55,6 @@ namespace WindowsFormsApp1
         /// <param name="id">Номер заказа</param>
         /// <param name="statusId">Новый статус</param>
         public void updateStatus(int id, int statusId) {
-            pathBD = System.IO.Path.GetFullPath("information_system.mdf");
-            stringConnect = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True", pathBD);
-            connection = new SqlConnection(stringConnect);
             string command = String.Format("UPDATE [order] SET stage='{0}' WHERE number='{1}'", statusId, id);
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
