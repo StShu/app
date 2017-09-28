@@ -89,12 +89,8 @@ namespace WindowsFormsApp1
             connection.Close();
             return data;
         }
-        /// <summary>
-        /// Добавление ткани
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="price"></param>
-        public void setCloth(string[] data, string price) {
+        public void setCloth(string[] data, string price)
+        {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             string command = String.Format("INSERT INTO cloth VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], price);
@@ -102,11 +98,6 @@ namespace WindowsFormsApp1
             cmd.ExecuteNonQuery();
             connection.Close();
         }
-        /// <summary>
-        /// Заполнение склада
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="quantity"></param>
         public void setStorage(string[] data, string quantity)
         { 
             connection.Open();
@@ -161,11 +152,6 @@ namespace WindowsFormsApp1
             cmd.ExecuteNonQuery();
             connection.Close();
         }
-        /// <summary>
-        /// сохранение заказа
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="price"></param>
         public void saveOrder(string[] data,int price) {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
@@ -177,7 +163,6 @@ namespace WindowsFormsApp1
             cmd.ExecuteNonQuery();
             connection.Close();
         }
-        //test git 
         #region getSet
 
         private void setRole(string role) {
